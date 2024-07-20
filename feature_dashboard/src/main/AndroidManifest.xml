@@ -9,9 +9,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BankingApps">
         <activity
-            android:name=".presentation.DashboardActivity"
-            android:exported="false"
-            android:label="@string/title_activity_dashboard" />
+            android:name=".presentation.ui.DashboardActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

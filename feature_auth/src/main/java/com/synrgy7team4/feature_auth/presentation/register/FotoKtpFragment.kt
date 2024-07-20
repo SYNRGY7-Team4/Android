@@ -22,8 +22,10 @@ import com.google.common.util.concurrent.ListenableFuture
 import com.synrgy7team4.feature_auth.R
 import com.synrgy7team4.feature_auth.databinding.FragmentFotoKtpBinding
 
-class FotoKtpFragment : Fragment(), ImageCapture.OnImageSavedCallback {
-    private var _binding: FragmentFotoKtpBinding? = null
+//class FotoKtpFragment : Fragment(){
+    class FotoKtpFragment : Fragment(), ImageCapture.OnImageSavedCallback {
+
+        private var _binding: FragmentFotoKtpBinding? = null
     private val binding get() = _binding!!
     private lateinit var cameraProviderFuture: ListenableFuture<ProcessCameraProvider>
     private var camera: Camera? = null
@@ -62,7 +64,7 @@ class FotoKtpFragment : Fragment(), ImageCapture.OnImageSavedCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnCapture.setOnClickListener {
-            takePicture()
+            //takePicture()
             requireView().findNavController().navigate(R.id.action_fotoKtpFragment_to_verifikasiKtpFragment)
         }
         binding.btnBack.setOnClickListener {

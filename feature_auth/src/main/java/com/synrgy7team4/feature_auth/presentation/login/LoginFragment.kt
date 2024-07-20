@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.synrgy7team4.feature_auth.R
 import com.synrgy7team4.feature_auth.databinding.FragmentLoginBinding
-import com.synrgy7team4.feature_dashboard.presentation.DashboardActivity
 
 
 class LoginFragment : Fragment() {
@@ -35,12 +34,12 @@ class LoginFragment : Fragment() {
             view.findNavController().popBackStack()
         }
 
-        binding.btnMasuk.setOnClickListener {
-            val intent = Intent (getActivity(), DashboardActivity::class.java)
-            getActivity()?.startActivity(intent)
-            /*view.findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment)*/
-            setupAccessibility()
-        }
+//        binding.btnMasuk.setOnClickListener {
+//            val intent = Intent (getActivity(), DashboardActivity::class.java)
+//            getActivity()?.startActivity(intent)
+//            /*view.findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment)*/
+//            setupAccessibility()
+//        }
     }
     private fun setupAccessibility() {
         binding.apply {

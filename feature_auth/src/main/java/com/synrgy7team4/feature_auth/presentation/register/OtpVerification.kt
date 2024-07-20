@@ -44,9 +44,9 @@ class OtpVerification : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.submitOTPButton.setOnClickListener {
+        binding.btnNext.setOnClickListener {
 
-            view.findNavController().navigate(R.id.action_otpVerification_to_createPassword)
+            view.findNavController().navigate(R.id.action_otpVerification_to_createPassword2)
         }
 
         binding.btnBack.setOnClickListener {

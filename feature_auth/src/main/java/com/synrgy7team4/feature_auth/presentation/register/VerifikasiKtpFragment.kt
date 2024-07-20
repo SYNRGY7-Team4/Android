@@ -34,7 +34,7 @@ class VerifikasiKtpFragment : Fragment() {
 
     private fun delayAndNavigate() {
         lifecycleScope.launch {
-            delay(5000) // Delay for 10 seconds (10000 milliseconds)
+            delay(2000) // Delay for 10 seconds (10000 milliseconds)
             requireView().findNavController().navigate(R.id.action_verifikasiKtpFragment_to_fingerprintVerifFragment)
         }
     }

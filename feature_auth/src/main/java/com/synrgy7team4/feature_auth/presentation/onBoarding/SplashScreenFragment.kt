@@ -9,9 +9,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.synrgy7team4.feature_auth.R
 import com.synrgy7team4.feature_auth.databinding.FragmentSplashScreenBinding
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+
 
 class SplashScreenFragment : Fragment() {
 
@@ -33,7 +38,9 @@ class SplashScreenFragment : Fragment() {
             playSequentially(playMoveScaling(), playFadeAnimation())
             addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
-                    findNavController().navigate(R.id.action_splashScreenFragment_to_onBoardingFragment)
+                    if (isAdded && view != null) { // Check if the fragment is still added and view is not null
+                        view.findNavController().navigate(R.id.action_splashScreenFragment_to_onBoardingFragment)
+                    }
                 }
             })
             start()
@@ -65,3 +72,4 @@ class SplashScreenFragment : Fragment() {
         _binding = null
     }
 }
+

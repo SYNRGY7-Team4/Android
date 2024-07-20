@@ -13,55 +13,21 @@ import com.synrgy7team4.feature_auth.R
 import com.synrgy7team4.feature_auth.databinding.FragmentCreatePasswordBinding
 import com.synrgy7team4.feature_auth.databinding.FragmentOtpVerificationBinding
 
-//class CreatePassword : Fragment() {
-//
-//    private var _binding: FragmentCreatePasswordBinding? = null
-//    private val binding get() = _binding!!
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//    }
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        // Inflate the layout for this fragment
-//       //return inflater.inflate(R.layout.fragment_create_password, container, false)
-//        _binding = FragmentCreatePasswordBinding.inflate(inflater, container, false)
-//        return binding.root
-//    }
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        binding.submitCreatedPassword.setOnClickListener {
-//            view.findNavController().navigate(R.id.action_createPassword_to_ktpVerificationBoardFragment)
-//        }
-//
-//        view.findViewById<MaterialButton>(R.id.submitCreatedPassword).setOnClickListener { getPassword(view) }
-//    }
-//
-//    private fun getPassword(view:View){
-//        val password = view.findViewById<TextInputEditText>(R.id.inputPassword).text
-//        val passwordConfirmation = view.findViewById<TextInputEditText>(R.id.inputPasswordConfirmation).text
-//
-//        Log.d("password", password.toString())
-//        Log.d("passwordConfirmation", passwordConfirmation.toString())
-//    }
-//}
-
 class CreatePassword : Fragment() {
 
     private var _binding: FragmentCreatePasswordBinding? = null
     private val binding get() = _binding!!
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        // return inflater.inflate(R.layout.fragment_otp_verification, container, false)
+       //return inflater.inflate(R.layout.fragment_create_password, container, false)
         _binding = FragmentCreatePasswordBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -70,25 +36,17 @@ class CreatePassword : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.submitCreatedPassword.setOnClickListener {
-            // Navigate with a delay
-            view.postDelayed({
-              //  view.findNavController().navigate(R.id.action_createPassword_to_ktpVerificationBoardFragment)
-            }, 2000) // Delay 2 seconds
+            view.findNavController().navigate(R.id.action_createPassword_to_ktpVerificationBoardFragment2)
         }
 
-        binding.submitCreatedPassword.setOnClickListener { getPassword() }
+        view.findViewById<MaterialButton>(R.id.submitCreatedPassword).setOnClickListener { getPassword(view) }
     }
 
-    private fun getPassword() {
-        val password = binding.inputPassword.text
-        val passwordConfirmation = binding.inputPasswordConfirmation.text
-        requireView().findNavController().navigate(R.id.action_createPassword_to_ktpVerificationBoardFragment2)
+    private fun getPassword(view:View){
+        val password = view.findViewById<TextInputEditText>(R.id.inputPassword).text
+        val passwordConfirmation = view.findViewById<TextInputEditText>(R.id.inputPasswordConfirmation).text
+
         Log.d("password", password.toString())
         Log.d("passwordConfirmation", passwordConfirmation.toString())
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }
