@@ -31,11 +31,11 @@
     <string name="input_nomor_hp">input nomor hp</string>
     <string name="input_email">input email</string>
 
-    <string name="tombol_sudah_punya_rekening">tombol sudah punya rekening</string>
-    <string name="tombol_belum_punya_rekening">tombol belum punya rekening</string>
+    <string name="tombol_sudah_punya_rekening">sudah punya rekening</string>
+    <string name="tombol_belum_punya_rekening">belum punya rekening</string>
     <string name="teks_selamat_datang">Teks Selamat datang</string>
     <string name="input_password">Input password</string>
-    <string name="tombol_masuk">tombol masuk</string>
+    <string name="tombol_masuk">Masuk</string>
     <string name="logo_dari_lumi">logo dari lumi</string>
 
     <string name="verifikasi_e_ktp">Verifikasi e-KTP</string>
@@ -88,8 +88,8 @@
     </string>
     <string name="biodata">Biodata</string>
     <string name="calendar_format">dd/mm/yyyy</string>
-    <string name="tombol_kirim">Tombol Kirim</string>
-    <string name="tombol_upload_ktp">Tombol Upload KTP</string>
+    <string name="tombol_kirim">Kirim</string>
+    <string name="tombol_upload_ktp">Upload KTP</string>
     <string name="silahkan_upload_dan_kirim_e_ktp_anda">Silahkan upload dan kirim E-KTP Anda!</string>
     <string name="teks_silahkan_upload_dan_kirim_e_ktp_anda">Teks Silahkan Upload dan Kirim E KTP Anda</string>
 
