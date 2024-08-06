@@ -1,7 +1,7 @@
 package com.synrgy7team4.feature_dashboard.data.remote.retrofit
 
 import com.google.gson.Gson
-import com.synrgy7team4.common.Constants.Companion.BASE_URL_AUTH
+import com.synrgy7team4.common.Constants.Companion.BASE_URL
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -41,6 +41,6 @@ fun provideRetrofit(
 }
 
 fun provideService(): ApiService {
-    return provideRetrofit(BASE_URL_AUTH).create(ApiService::class.java)
+    return provideRetrofit(BASE_URL).create(ApiService::class.java)
 
 }

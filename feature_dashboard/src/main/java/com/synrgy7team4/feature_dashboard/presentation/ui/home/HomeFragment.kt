@@ -18,7 +18,6 @@ import com.synrgy7team4.feature_dashboard.R
 
 import androidx.navigation.findNavController
 
-import com.synrgy7team4.feature_dashboard.R
 import com.synrgy7team4.feature_dashboard.databinding.FragmentHomeBinding
 import kotlinx.coroutines.launch
 import com.synrgy7team4.feature_mutasi.presentation.ui.MutasiFragment
