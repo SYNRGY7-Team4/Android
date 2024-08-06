@@ -3,35 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/feature_auth_navigation"
-    app:startDestination="@id/splashScreenFragment">
+    app:startDestination="@id/inputEmailFragment">
 
     <fragment
         android:id="@+id/fotoKtpFragment"
         android:name="com.synrgy7team4.feature_auth.presentation.register.FotoKtpFragment"
         android:label="fragment_foto_ktp"
-        tools:layout="@layout/fragment_foto_ktp" >
-        <action
-            android:id="@+id/action_fotoKtpFragment_to_verifikasiKtpFragment"
-            app:destination="@id/verifikasiKtpFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_foto_ktp" />
     <fragment
         android:id="@+id/verifikasiKtpFragment"
         android:name="com.synrgy7team4.feature_auth.presentation.register.VerifikasiKtpFragment"
         android:label="fragment_verifikasi_ktp"
-        tools:layout="@layout/fragment_verifikasi_ktp" >
-        <action
-            android:id="@+id/action_verifikasiKtpFragment_to_fingerprintVerifFragment"
-            app:destination="@id/fingerprintVerifFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_verifikasi_ktp" />
     <fragment
         android:id="@+id/fingerprintVerifFragment"
         android:name="com.synrgy7team4.feature_auth.presentation.register.FingerprintVerifFragment"
         android:label="fragment_fingerprint_verif"
-        tools:layout="@layout/fragment_fingerprint_verif" >
-        <action
-            android:id="@+id/action_fingerprintVerifFragment_to_pinFragment"
-            app:destination="@id/pinFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_fingerprint_verif" />
     <fragment
         android:id="@+id/pinFragment"
         android:name="com.synrgy7team4.feature_auth.presentation.register.PinFragment"
@@ -49,14 +37,23 @@
         <action
             android:id="@+id/action_pinConfirmationFragment_to_registrationSuccessFragment"
             app:destination="@id/registrationSuccessFragment" />
+        <action
+            android:id="@+id/action_pinConfirmationFragment_to_uploadKtpFragment"
+            app:destination="@id/uploadKtpFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationSuccessFragment"
         android:name="com.synrgy7team4.feature_auth.presentation.register.RegistrationSuccessFragment"
         android:label="fragment_registration_success"
         tools:layout="@layout/fragment_registration_success" >
-
+        <action
+            android:id="@+id/action_registrationSuccessFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
+    <!--<activity
+        android:id="@+id/mainActivity"
+        android:name="com.synrgy7team4.feature_dashboard.presentation.DashboardActivityivity"
+        android:label="DashboardActivity" />-->
     <fragment
         android:id="@+id/inputEmailFragment"
         android:name="com.synrgy7team4.feature_auth.presentation.register.InputEmailFragment"
@@ -91,35 +88,29 @@
         android:name="com.synrgy7team4.feature_auth.presentation.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
-
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/otpVerification"
-        android:name="com.synrgy7team4.feature_auth.presentation.register.OtpVerificationFragment"
+        android:name="com.synrgy7team4.feature_auth.presentation.register.OtpVerification"
         android:label="fragment_otp_verification"
         tools:layout="@layout/fragment_otp_verification" >
         <action
-            android:id="@+id/action_otpVerification_to_createPassword"
-            app:destination="@id/createPassword" />
-    </fragment>
-    <fragment
-        android:id="@+id/createPassword"
-        android:name="com.synrgy7team4.feature_auth.presentation.register.CreatePassword"
-        android:label="fragment_create_password"
-        tools:layout="@layout/fragment_create_password" >
-        <action
-            android:id="@+id/action_createPassword_to_ktpVerificationBoardFragment2"
-            app:destination="@id/ktpVerificationBoardFragment" />
+            android:id="@+id/action_otpVerification_to_createPasswordFragment"
+            app:destination="@id/createPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/ktpVerificationBoardFragment"
         android:name="com.synrgy7team4.feature_auth.presentation.register.KtpVerificationBoardFragment"
         android:label="fragment_ktp_verification_board"
-        tools:layout="@layout/fragment_ktp_verification_board" >
-        <action
-            android:id="@+id/action_ktpVerificationBoardFragment_to_fotoKtpFragment"
-            app:destination="@id/fotoKtpFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_ktp_verification_board" />
+  
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.synrgy7team4.feature_dashboard.presentation.ui.home.HomeFragment"
+        android:label="HomeFragment" />
     <fragment
         android:id="@+id/splashScreenFragment"
         android:name="com.synrgy7team4.feature_auth.presentation.onBoarding.SplashScreenFragment"
@@ -129,6 +120,35 @@
             android:id="@+id/action_splashScreenFragment_to_onBoardingFragment"
             app:destination="@id/onBoardingFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/createPasswordFragment"
+        android:name="com.synrgy7team4.feature_auth.presentation.register.CreatePasswordFragment"
+        android:label="fragment_create_password"
+        tools:layout="@layout/fragment_create_password" >
+        <action
+            android:id="@+id/action_createPasswordFragment_to_biodataFragment"
+            app:destination="@id/biodataFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/biodataFragment"
+        android:name="com.synrgy7team4.feature_auth.presentation.register.BiodataFragment"
+        android:label="fragment_biodata"
+        tools:layout="@layout/fragment_biodata" >
+        <action
+            android:id="@+id/action_biodataFragment_to_pinFragment"
+            app:destination="@id/pinFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/uploadKtpFragment"
+        android:name="com.synrgy7team4.feature_auth.presentation.register.UploadKtpFragment"
+        android:label="fragment_upload_ktp"
+        tools:layout="@layout/fragment_upload_ktp" >
+        <action
+            android:id="@+id/action_uploadKtpFragment_to_registrationSuccessFragment"
+            app:destination="@id/registrationSuccessFragment" />
+    </fragment>
+
+
 </navigation>
 
 

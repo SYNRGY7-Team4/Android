@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/feature_auth" />
             <option value="$PROJECT_DIR$/feature_dashboard" />
             <option value="$PROJECT_DIR$/feature_mutasi" />
+            <option value="$PROJECT_DIR$/shared" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

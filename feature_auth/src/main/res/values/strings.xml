@@ -26,17 +26,18 @@
     <string name="konfirmasi_pin">Konfirmasi PIN</string>
     <string name="konfirmasi_6_digit_pin">Konfirmasi 6 digit PIN</string>
     <string name="anda_berhasil_membuka_rekening">Anda berhasil membuka rekening</string>
-    <string name="no_hp">No HP</string>
+
     <string name="tombol_kembali">tombol kembali</string>
     <string name="tombol_lanjut">Tombol lanjut</string>
+    <string name="no_hp">No HP</string>
     <string name="input_nomor_hp">input nomor hp</string>
     <string name="input_email">input email</string>
 
-    <string name="tombol_sudah_punya_rekening">tombol sudah punya rekening</string>
-    <string name="tombol_belum_punya_rekening">tombol belum punya rekening</string>
+    <string name="tombol_sudah_punya_rekening">sudah punya rekening</string>
+    <string name="tombol_belum_punya_rekening">belum punya rekening</string>
     <string name="teks_selamat_datang">Teks Selamat datang</string>
     <string name="input_password">Input password</string>
-    <string name="tombol_masuk">tombol masuk</string>
+    <string name="tombol_masuk">Masuk</string>
     <string name="logo_dari_lumi">logo dari lumi</string>
 
     <string name="verifikasi">Verifikasi</string>
@@ -44,12 +45,13 @@
     <string name="verif_description"><![CDATA[Pastikan e-KTP dalam area terang & data terbaca dengan jelas]]></string>
     <string name="lanjut">Lanjut</string>
     <string name="ambil_foto_e_ktp">Ambil Foto e-KTP</string>
-
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="ektp_image">Gambar E-KTP</string>
+
 
     <string name="input_pertama">Input Pertama</string>
     <string name="input_kedua">Input Kedua</string>
@@ -95,6 +97,12 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="biodata">Biodata</string>
+    <string name="calendar_format">dd/mm/yyyy</string>
+    <string name="tombol_kirim">Kirim</string>
+    <string name="tombol_upload_ktp">Upload KTP</string>
+    <string name="silahkan_upload_dan_kirim_e_ktp_anda">Silahkan upload dan kirim E-KTP Anda!</string>
+    <string name="teks_silahkan_upload_dan_kirim_e_ktp_anda">Teks Silahkan Upload dan Kirim E KTP Anda</string>
     <string name="papan_tombol">Papan Tombol</string>
     <string name="back">back</string>
     <string name="foto_ktp">Foto KTP</string>

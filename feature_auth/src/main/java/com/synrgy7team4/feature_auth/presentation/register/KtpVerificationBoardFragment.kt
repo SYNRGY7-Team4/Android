@@ -33,7 +33,7 @@ class KtpVerificationBoardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnNext.setOnClickListener {
-            view.findNavController().navigate(R.id.action_ktpVerificationBoardFragment_to_fotoKtpFragment)
+            //view.findNavController().navigate(R.id.action_ktpVerificationBoardFragment_to_fotoKtpFragment)
         }
     }
 

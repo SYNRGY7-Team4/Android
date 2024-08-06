@@ -16,7 +16,7 @@ android {
 
     defaultConfig {
         applicationId = "com.synrgy7team4.bankingapps"
-        minSdk = 26
+        minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -70,9 +70,9 @@ dependencies {
 
     implementation(project(":feature_auth"))
     implementation(project(":feature_mutasi"))
-    //implementation(project(":feature_transfer"))
-
+    implementation(project(":feature_dashboard"))
     implementation(project(":common"))
+    implementation(project(":shared"))
     implementation("androidx.activity:activity:1.8.0")
     implementation("com.google.firebase:firebase-crashlytics:19.0.3")
 

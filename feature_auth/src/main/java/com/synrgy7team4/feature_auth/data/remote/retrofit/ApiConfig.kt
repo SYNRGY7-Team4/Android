@@ -3,7 +3,7 @@ package com.synrgy7team4.feature_auth.data.remote.retrofit
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.google.gson.Gson
-import com.synrgy7team4.common.Constants.Companion.BASE_URL
+import com.synrgy7team4.common.Constants.Companion.BASE_URL_AUTH
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -11,29 +11,38 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-object ApiConfig {
-    fun provideApiService(context: Context): ApiService =
-        Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create(Gson()))
-            .client(provideOkhttpClient(context))
-            .build()
-            .create(ApiService::class.java)
+fun provideHttpClient(): OkHttpClient {
+    return OkHttpClient
+        .Builder()
+        .addInterceptor(provideHttpLoggingInterceptor())
+        .readTimeout(60, TimeUnit.SECONDS)
+        .connectTimeout(60, TimeUnit.SECONDS)
+        .writeTimeout(60, TimeUnit.SECONDS)
+        .build()
+}
 
-    private fun provideOkhttpClient(context: Context): OkHttpClient =
-        OkHttpClient.Builder()
-            .readTimeout(60, TimeUnit.SECONDS)
-            .connectTimeout(60, TimeUnit.SECONDS)
-            .addInterceptor(provideHttpLoggingInterceptor())
-            .addInterceptor(provideChuckerInterceptor(context))
-            .build()
+ fun provideHttpLoggingInterceptor(): Interceptor {
+    val httpLoggingInterceptor = HttpLoggingInterceptor()
+    httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+    return httpLoggingInterceptor
+}
 
-    private fun provideHttpLoggingInterceptor(): Interceptor {
-        val httpLoggingInterceptor = HttpLoggingInterceptor()
-        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-        return httpLoggingInterceptor
-    }
+fun provideConverterFactory(): GsonConverterFactory =
+    GsonConverterFactory.create()
 
-    private fun provideChuckerInterceptor(context: Context): Interceptor =
-        ChuckerInterceptor.Builder(context).build()
+
+fun provideRetrofit(
+    baseUrl: String,
+): Retrofit {
+    return Retrofit.Builder()
+        .baseUrl(baseUrl)
+//        .baseUrl(BASE_URL)
+        .client(provideHttpClient())
+        .addConverterFactory(GsonConverterFactory.create(Gson()))
+        .build()
+}
+
+fun provideService(): ApiService {
+    return provideRetrofit(BASE_URL_AUTH).create(ApiService::class.java)
+
 }

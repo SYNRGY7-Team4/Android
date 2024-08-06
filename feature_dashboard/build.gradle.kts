@@ -9,7 +9,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        minSdk = 26
+        minSdk = 24
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -38,6 +38,7 @@ android {
 dependencies {
 
     implementation(project(":common"))
+    implementation(project(":shared"))
     implementation(project(":feature_mutasi"))
 
     implementation("androidx.core:core-ktx:1.13.1")

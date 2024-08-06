@@ -1,7 +1,8 @@
 package com.synrgy7team4.feature_auth.presentation.register
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.KeyEvent
@@ -17,10 +18,12 @@ import androidx.navigation.findNavController
 import com.synrgy7team4.feature_auth.R
 import com.synrgy7team4.feature_auth.databinding.FragmentOtpVerificationBinding
 
-class OtpVerificationFragment : Fragment() {
+class OtpVerification : Fragment() {
 
     private var _binding: FragmentOtpVerificationBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var sharedPreferences: SharedPreferences
 
     private lateinit var inputCode1: EditText
     private lateinit var inputCode2: EditText
@@ -29,7 +32,9 @@ class OtpVerificationFragment : Fragment() {
     private lateinit var inputCode5: EditText
     private lateinit var inputCode6: EditText
 
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,7 +49,25 @@ class OtpVerificationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initiateCountdown(view);
+        sharedPreferences = requireActivity().getSharedPreferences("RegisterPrefs", Context.MODE_PRIVATE)
+
+        val hp = sharedPreferences.getString("hp", "08123456789")
+        binding.tvNumber.text = hp
+
+        binding.btnBack.setOnClickListener {
+            view.findNavController().popBackStack()
+
+        }
+
+        binding.submitOTPButton.setOnClickListener {
+
+            view.findNavController().navigate(R.id.action_otpVerification_to_createPasswordFragment)
+//            view.findNavController().navigate(R.id.action_otpVerification_to_ktpVerificationBoardFragment)
+        }
+
+        binding.btnBack.setOnClickListener {
+            view.findNavController().popBackStack()
+        }
 
         inputCode1 = view.findViewById(R.id.inputCode1)
         inputCode2 = view.findViewById(R.id.inputCode2)
@@ -55,60 +78,10 @@ class OtpVerificationFragment : Fragment() {
 
         setupOTPInputs()
 
-        binding.btnBack.setOnClickListener {
-            view.findNavController().popBackStack()
-        }
-
-        binding.submitOTPButton.setOnClickListener {submitOTP()}
-
-        binding.sendOtpCode.setOnClickListener {sendOtpCode(view)}
+       // view.findViewById<MaterialButton>(R.id.submitOTPButton).setOnClickListener{getOTP()}
     }
 
-    private fun sendOtpCode(view:View) {
-        val countDownTextView = view.findViewById<TextView>(R.id.sendOtpCode)
-        val validString = resources.getString(R.string.kirim_ulang_otp)
-        if (countDownTextView.text == validString){
-            Toast.makeText(activity,"sending otp code again", Toast.LENGTH_SHORT).show();
-            initiateCountdown(view);
-        }
-    }
-
-    private fun initiateCountdown(view:View) {
-        val countDownTextView = view.findViewById<TextView>(R.id.sendOtpCode)
-
-        val timer = object: CountDownTimer(60*1000, 1*1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                val countDownString = "00:${(millisUntilFinished/1000).toInt()}";
-                countDownTextView.text = countDownString;
-                countDownTextView.setTextColor(ContextCompat.getColor(requireContext(), R.color.black));
-            }
-
-            override fun onFinish() {
-                countDownTextView.text = resources.getString(R.string.kirim_ulang_otp);
-                countDownTextView.setTextColor(ContextCompat.getColor(requireContext(),R.color.primary_blue));
-            }
-        }
-        timer.start()
-    }
-
-    private fun submitOTP() {
-        val correctOtp = "123456";
-        val currentOtp = getOtpInString();
-
-        if(currentOtp == correctOtp)
-        {
-            view?.findNavController()?.navigate(R.id.action_otpVerification_to_createPassword)
-        }else
-        {
-            Toast.makeText(activity,"OTP not match!", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private fun getOtpInString(): String {
-        return "${inputCode1.text}${inputCode2.text}${inputCode3.text}${inputCode4.text}${inputCode5.text}${inputCode6.text}"
-    }
-
-    private fun setupOTPInputs() {
+    private fun setupOTPInputs(){
         //when use input number
         addTextWatcher(inputCode1,inputCode2)
         addTextWatcher(inputCode2,inputCode3)
@@ -125,7 +98,7 @@ class OtpVerificationFragment : Fragment() {
         inputCode6.setOnKeyListener(GenericKeyEvent(inputCode6, inputCode5))
     }
 
-    private fun addTextWatcher(inputCodeFirst:EditText, inputCodeSecond:EditText) {
+    private fun addTextWatcher(inputCodeFirst:EditText, inputCodeSecond:EditText){
         return inputCodeFirst.addTextChangedListener(object : TextWatcher {
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -140,6 +113,10 @@ class OtpVerificationFragment : Fragment() {
             override fun afterTextChanged(s: Editable?) {
             }
         })
+    }
+
+    private fun getOTP(){
+        Log.d("OTP","${inputCode1.text}${inputCode2.text}${inputCode3.text}${inputCode4.text}${inputCode5.text}${inputCode6.text}")
     }
 }
 

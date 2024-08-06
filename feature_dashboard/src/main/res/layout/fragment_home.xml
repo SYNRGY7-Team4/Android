@@ -39,7 +39,7 @@
         android:layout_width="364dp"
         android:layout_height="270dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/bg_account"
+        android:background="@drawable/bg_acc_card"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_name">
@@ -73,49 +73,52 @@
             android:id="@+id/tv_rp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="20dp"
             style="@style/BoldText"
-            android:text="Rp"
+            android:text="@string/rp"
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/tv_acc_number"
-            app:layout_constraintStart_toStartOf="@id/tv_acc_number"/>
+            app:layout_constraintStart_toStartOf="@id/tv_acc_number"
+            />
 
         <TextView
-            android:id="@+id/tv_balance"
+            android:id="@+id/tv_acc_balance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="8dp"
             style="@style/BoldText"
             android:text="@string/dummy_account_balance"
             android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/tv_acc_number"
             app:layout_constraintStart_toEndOf="@id/tv_rp"
-            app:layout_constraintTop_toBottomOf="@id/tv_acc_number"/>
+           />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/toggle_balance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:src="@drawable/ic_visibility_on"
-            android:background="@android:color/transparent"
             android:contentDescription="@string/tampilkan_saldo"
-            app:layout_constraintBottom_toBottomOf="@id/tv_balance"
-            app:layout_constraintStart_toEndOf="@id/tv_balance"
-            app:layout_constraintTop_toTopOf="@id/tv_balance"
+
+            app:layout_constraintBottom_toBottomOf="@id/tv_acc_balance"
+            app:layout_constraintStart_toEndOf="@id/tv_acc_balance"
+            app:layout_constraintTop_toTopOf="@id/tv_acc_balance"
             app:layout_constraintVertical_bias="0.428" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_transfer"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:layout_marginTop="10dp"
             android:text="@string/transfer"
+            app:cornerRadius="11dp"
             android:contentDescription="@string/transfer"
             android:backgroundTint="@color/primary_blue"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="@id/tv_rp"
-            app:layout_constraintTop_toBottomOf="@id/tv_rp" />
+            app:layout_constraintTop_toBottomOf="@id/tv_acc_balance" />
 
 <!--        <Button-->
 <!--            android:id="@+id/btn_history"-->
@@ -129,12 +132,13 @@
 <!--            app:layout_constraintStart_toEndOf="@id/btn_transfer"-->
 <!--            app:layout_constraintTop_toBottomOf="@id/tv_acc_balance" />-->
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_history"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
+            app:cornerRadius="11dp"
             style="?attr/materialButtonOutlinedStyle"
             app:strokeColor = "@color/white"
             android:textColor="@color/white"
@@ -142,8 +146,7 @@
             android:contentDescription="@string/riwayat"
             android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@id/btn_transfer"
-            app:layout_constraintTop_toBottomOf="@id/tv_balance"
-           />
+            app:layout_constraintTop_toBottomOf="@id/tv_acc_balance" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -195,6 +198,20 @@
         app:layout_constraintEnd_toEndOf="@id/acc_layout"
 
         />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        android:background="@drawable/bg_bottom_navbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
