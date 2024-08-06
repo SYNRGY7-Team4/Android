@@ -16,19 +16,11 @@ class OnBoardingFragment : Fragment() {
 
     private val binding by lazy { FragmentOnBoardingBinding.inflate(layoutInflater) }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
-        playAnimation()
         return binding.root
 
 
@@ -36,7 +28,7 @@ class OnBoardingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        playAnimation()
 
         setupAccessibility()
 

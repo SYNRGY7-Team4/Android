@@ -1,5 +1,6 @@
 package com.synrgy7team4.feature_auth.presentation.register
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.synrgy7team4.feature_auth.R
 import com.synrgy7team4.feature_auth.databinding.FragmentRegistrationSuccessBinding
 import com.synrgy7team4.feature_auth.databinding.FragmentVerifikasiKtpBinding
 import com.synrgy7team4.feature_auth.presentation.viewmodel.RegisterViewModel
+import com.synrgy7team4.feature_dashboard.presentation.DashboardActivity
 
 class RegistrationSuccessFragment : Fragment() {
     private var _binding: FragmentRegistrationSuccessBinding? = null

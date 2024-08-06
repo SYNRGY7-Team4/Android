@@ -15,8 +15,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.jer.shared.ViewModelFactoryProvider
 import com.synrgy7team4.feature_dashboard.R
+
+import androidx.navigation.findNavController
+
+import com.synrgy7team4.feature_dashboard.R
 import com.synrgy7team4.feature_dashboard.databinding.FragmentHomeBinding
 import kotlinx.coroutines.launch
+import com.synrgy7team4.feature_mutasi.presentation.ui.MutasiFragment
 
 class HomeFragment : Fragment() {
 
@@ -102,7 +107,11 @@ class HomeFragment : Fragment() {
         }
 
         binding.btnHistory.setOnClickListener {
-            showToast()
+            val transaction = activity?.supportFragmentManager?.beginTransaction()
+            transaction?.replace(R.id.full_framelayout, MutasiFragment())
+            transaction?.addToBackStack(null)
+            transaction?.commit()
+            //view.findNavController().navigate(R.id.action_navigation_home_to_mutasiFragment)
         }
 
         binding.tvAccBalance.text = fullBalance

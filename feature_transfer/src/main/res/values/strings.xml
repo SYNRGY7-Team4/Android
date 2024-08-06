@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Banking Apps</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="masukkan_pin">Masukkan PIN</string>
+    <string name="gunakan_pin_lumi_anda">Gunakan PIN Lumi Anda</string>
+    <string name="dummy_recipient_name">Yumi</string>
+    <string name="dummy_bank_name">Lumi Bank</string>
+    <string name="dummy_acc_num">14567229011</string>
+    <string name="rp">Rp</string>
+    <string name="dummy_nominal">10,000</string>
+    <string name="tanggal_transfer">Tanggal Transfer</string>
+    <string name="waktu">Waktu</string>
+    <string name="dummy_date">Jumat, 19 Juli 2024</string>
+    <string name="btn_bagikan">Bagikan</string>
+    <string name="bagikan">Bagikan</string>
+    <string name="detail">Detail</string>
+    <string name="selesai">Selesai</string>
+    <string name="dummy_date2">19 Juli 2024</string>
+    <string name="dummy_time">07:00:12 WIB</string>
+    <string name="dots">.</string>
+    <string name="nama_penerima_title">Nama Penerima</string>
+    <string name="dummy_name">Yumi</string>
+    <string name="detail_transaksi">Detail Transaksi</string>
+    <string name="sesama_bank">Sesama Bank</string>
+    <string name="total_transaksi">Total Transaksi</string>
+    <string name="rp_10_000">Rp 10,000</string>
+    <string name="dummy_sender">Nur Afina</string>
+    <string name="dummy_sender_acc_num">7293 **** **** 9283</string>
+    <string name="transfer_berhasil">Transfer Berhasil!</string>
+
+</resources>

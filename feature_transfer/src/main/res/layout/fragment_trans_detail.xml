@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="25dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.synrgy7team4.feature_transfer.presentation.ui.samebank.TransDetailFragment">
+
+    <ImageView
+        android:id="@+id/iv_success"
+        android:layout_marginTop="120dp"
+        android:contentDescription="@null"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_success"
+        android:layout_width="wrap_content"
+        android:layout_height="96dp"/>
+
+    <TextView
+        android:id="@+id/tv_success"
+        android:text="@string/transfer_berhasil"
+        style="@style/RegulerText"
+        android:textColor="@color/black"
+        android:layout_marginTop="15dp"
+        android:contentDescription="@string/transfer_berhasil"
+        app:layout_constraintTop_toBottomOf="@id/iv_success"
+        app:layout_constraintStart_toStartOf="@id/iv_success"
+        app:layout_constraintEnd_toEndOf="@id/iv_success"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <include
+        android:id="@+id/recipient"
+        layout="@layout/trans_success_recipient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:layout_marginStart="7dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_success"/>
+
+    <TextView
+        android:id="@+id/tv_rp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="@string/rp"
+        android:textSize="24sp"
+        style="@style/BoldText"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/recipient"
+        app:layout_constraintEnd_toStartOf="@id/tv_nominal"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_nominal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_marginStart="5dp"
+        android:text="@string/dummy_nominal"
+        android:textSize="24sp"
+        style="@style/BoldText"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/recipient"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/tv_rp"/>
+
+    <include
+        android:id="@+id/trans_detail"
+        layout="@layout/trans_success_detail"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_rp"
+
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_share"
+        app:icon="@drawable/ic_share"
+        app:iconTint="@color/primary_blue"
+        app:iconGravity="textStart"
+        android:layout_marginTop="35dp"
+        android:text="@string/bagikan"
+        android:textColor="@color/primary_blue"
+        android:fontFamily="@font/calibri"
+        android:textSize="12sp"
+        android:contentDescription="@string/bagikan"
+        style="@style/CustomOutlinedButton"
+        app:cornerRadius="8dp"
+        android:layout_width="170dp"
+        android:layout_height="45dp"
+        app:layout_constraintTop_toBottomOf="@id/trans_detail"
+        app:layout_constraintStart_toStartOf="@id/trans_detail"
+        app:layout_constraintEnd_toStartOf="@id/btn_detail"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_detail"
+        android:contentDescription="@string/detail"
+        app:icon="@drawable/ic_receipt_"
+        app:iconTint="@color/primary_blue"
+        app:iconGravity="textStart"
+        android:layout_marginTop="35dp"
+        android:text="@string/detail"
+        android:textColor="@color/primary_blue"
+        android:fontFamily="@font/calibri"
+        android:textSize="12sp"
+        style="@style/CustomOutlinedButton"
+        app:cornerRadius="8dp"
+        android:layout_width="170dp"
+        android:layout_height="45dp"
+        app:layout_constraintTop_toBottomOf="@id/trans_detail"
+        app:layout_constraintEnd_toEndOf="@id/trans_detail"
+        app:layout_constraintStart_toEndOf="@id/btn_share"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_done"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/selesai"
+        app:cornerRadius="8dp"
+        android:backgroundTint="@color/primary_blue"
+        android:contentDescription="@string/selesai"
+        app:layout_constraintTop_toBottomOf="@id/btn_share"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

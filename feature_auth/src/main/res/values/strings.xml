@@ -3,6 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="masuk">Masuk</string>
     <string name="password">Password</string>
+    <string name="buat_password">Buat Password</string>
     <string name="email">Email</string>
     <string name="sudah_punya_rekening">Sudah Punya Rekening?</string>
     <string name="belum_punya_rekening">Belum Punya Rekening</string>
@@ -21,6 +22,7 @@
     <string name="_8">8</string>
     <string name="_9">9</string>
     <string name="_0">0</string>
+    <string name="konfirmasi_password">Konfirmasi Password</string>
     <string name="konfirmasi_pin">Konfirmasi PIN</string>
     <string name="konfirmasi_6_digit_pin">Konfirmasi 6 digit PIN</string>
     <string name="anda_berhasil_membuka_rekening">Anda berhasil membuka rekening</string>
@@ -38,6 +40,7 @@
     <string name="tombol_masuk">Masuk</string>
     <string name="logo_dari_lumi">logo dari lumi</string>
 
+    <string name="verifikasi">Verifikasi</string>
     <string name="verifikasi_e_ktp">Verifikasi e-KTP</string>
     <string name="verif_description"><![CDATA[Pastikan e-KTP dalam area terang & data terbaca dengan jelas]]></string>
     <string name="lanjut">Lanjut</string>
@@ -49,6 +52,14 @@
     <string name="previous">Previous</string>
     <string name="ektp_image">Gambar E-KTP</string>
 
+
+    <string name="input_pertama">Input Pertama</string>
+    <string name="input_kedua">Input Kedua</string>
+    <string name="input_ketiga">Input Ketiga</string>
+    <string name="input_keempat">Input Keempat</string>
+    <string name="input_kelima">Input Kelima</string>
+    <string name="input_keenam">Input Keenam</string>
+    <string name="kirim_ulang_otp">Kirim ulang kode</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
@@ -92,5 +103,17 @@
     <string name="tombol_upload_ktp">Upload KTP</string>
     <string name="silahkan_upload_dan_kirim_e_ktp_anda">Silahkan upload dan kirim E-KTP Anda!</string>
     <string name="teks_silahkan_upload_dan_kirim_e_ktp_anda">Teks Silahkan Upload dan Kirim E KTP Anda</string>
+    <string name="papan_tombol">Papan Tombol</string>
+    <string name="back">back</string>
+    <string name="foto_ktp">Foto KTP</string>
+    <string name="border_ktp">Border KTP</string>
+    <string name="capture_image">Capture Image</string>
+    <string name="flip_camera">Flip Camera</string>
+    <string name="verifikasi_fingerprint">Verifikasi Fingerprint</string>
+    <string name="check_biometric_finger">Check Biometric Finger</string>
+    <string name="sentuh_sensor_fingerprint">Sentuh Sensor Fingerprint</string>
+    <string name="jangan_tutup_aplikasi">Jangan tutup Aplikasi,</string>
+    <string name="e_ktp_sedang_di_verifikasi">e-KTP sedang di verifikasi</string>
+    <string name="verifikasi_ktp">Verifikasi KTP</string>
 
 </resources>

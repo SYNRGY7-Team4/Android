@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!--    <style name="BoldText">-->
+<!--        <item name="android:fontFamily">@font/calibrib</item>-->
+<!--        <item name="android:textStyle">bold</item>-->
+<!--        <item name="android:textSize">32sp</item>-->
+<!--&lt;!&ndash;        <item name="android:lineHeight">40dp</item>&ndash;&gt;-->
+<!--&lt;!&ndash;        <item name="android:letterSpacing">-0.75</item>&ndash;&gt;-->
+<!--    </style>-->
+
+
+<!--    <style name="RegulerText">-->
+<!--        <item name="android:fontFamily">@font/calibri</item>-->
+<!--        <item name="android:textStyle">normal</item>-->
+<!--        <item name="android:textSize">16sp</item>-->
+<!--&lt;!&ndash;        <item name="android:lineHeight">24dp</item>&ndash;&gt;-->
+<!--&lt;!&ndash;        <item name="android:letterSpacing">+0.15</item>&ndash;&gt;-->
+<!--    </style>-->
+
+<!--    <style name="LightText">-->
+<!--        <item name="android:fontFamily">@font/calibrilight</item>-->
+<!--        <item name="android:textStyle">normal</item>-->
+<!--        <item name="android:textSize">14sp</item>-->
+<!--        <item name="android:lineHeight">23dp</item>-->
+<!--        <item name="android:letterSpacing">0</item>-->
+<!--    </style>-->
+
+</resources>

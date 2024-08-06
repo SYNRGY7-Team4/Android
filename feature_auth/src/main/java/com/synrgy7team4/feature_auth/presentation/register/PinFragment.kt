@@ -63,7 +63,6 @@ class PinFragment : Fragment(), View.OnClickListener {
         pinInputBinding = PinInputBinding.bind(binding.pinInput.root)
 
         initializeComponents()
-
     }
 
     private fun initializeComponents() {

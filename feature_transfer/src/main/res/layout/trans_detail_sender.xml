@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv_acc_source_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rekening Sumber"
+        android:textColor="@color/grey"
+        android:textSize="12sp"
+        style="@style/RegulerText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_sender_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy_sender"
+        android:layout_marginTop="4dp"
+
+        android:textColor="@color/primary_blue"
+        style="@style/BoldText"
+        app:layout_constraintTop_toBottomOf="@id/tv_acc_source_title"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_acc_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+
+        android:text="Bank BCA"
+        android:textColor="@color/black"
+        style="@style/RegulerText"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sender_name"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_acc_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/dummy_sender_acc_num"
+        android:textSize="12sp"
+        style="@style/RegulerText"
+        android:layout_marginStart="5dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/tv_acc_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_sender_name"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,6 +35,7 @@ class PinConfirmationFragment : Fragment(), View.OnClickListener {
         app.provideViewModelFactory()
     }
 
+
     private val numberList = ArrayList<String>()
     private var passCode = ""
     private var input1: String? = null

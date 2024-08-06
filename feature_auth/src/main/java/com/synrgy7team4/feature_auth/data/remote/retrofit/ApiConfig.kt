@@ -1,5 +1,7 @@
 package com.synrgy7team4.feature_auth.data.remote.retrofit
 
+import android.content.Context
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.google.gson.Gson
 import com.synrgy7team4.common.Constants.Companion.BASE_URL_AUTH
 import okhttp3.Interceptor

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="30dp"
-    tools:context="com.synrgy7team4.feature_auth.presentation.register.OtpVerification">
+    tools:context="com.synrgy7team4.feature_auth.presentation.register.OtpVerificationFragment">
 
     <ImageView
         android:id="@+id/btn_back"
@@ -20,7 +20,7 @@
             android:id="@+id/verifikasi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Verifikasi"
+            android:text="@string/verifikasi"
             android:textColor="@color/primary_blue"
             android:textSize="32sp"
             android:textStyle="bold"
@@ -85,6 +85,8 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:layout_margin="8dp"
+                android:contentDescription="@string/input_pertama"
+
                 tools:ignore="labelFor"/>
             <EditText
                 android:id="@+id/inputCode2"
@@ -97,6 +99,8 @@
                 android:maxLength="1"
                 android:textSize="24sp"
                 android:textStyle="bold"
+                android:contentDescription="@string/input_kedua"
+
                 android:layout_margin="8dp"
                 tools:ignore="labelFor"/>
             <EditText
@@ -110,6 +114,8 @@
                 android:maxLength="1"
                 android:textSize="24sp"
                 android:textStyle="bold"
+                android:contentDescription="@string/input_ketiga"
+
                 android:layout_margin="8dp"
                 tools:ignore="labelFor"/>
             <EditText
@@ -123,6 +129,7 @@
                 android:maxLength="1"
                 android:textSize="24sp"
                 android:textStyle="bold"
+                android:contentDescription="@string/input_keempat"
                 android:layout_margin="8dp"
                 tools:ignore="labelFor"/>
             <EditText
@@ -136,6 +143,7 @@
                 android:maxLength="1"
                 android:textSize="24sp"
                 android:textStyle="bold"
+                android:contentDescription="@string/input_kelima"
                 android:layout_margin="8dp"
                 tools:ignore="labelFor"/>
             <EditText
@@ -149,6 +157,7 @@
                 android:maxLength="1"
                 android:textSize="24sp"
                 android:textStyle="bold"
+                android:contentDescription="@string/input_keenam"
                 android:layout_margin="8dp"
                 tools:ignore="labelFor"/>
 
@@ -162,6 +171,7 @@
             android:textSize="11sp"
             android:layout_marginTop="20dp"
             android:text="00:53"
+            android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@id/otpInputLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -180,13 +190,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/submitOTPButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/PrimaryActiveButton"
             android:layout_margin="70dp"
-            android:text="Lanjut"
+            android:text="@string/lanjut"
             android:textSize="20sp"
             app:cornerRadius="8dp"
             app:layout_constraintBottom_toBottomOf="parent"

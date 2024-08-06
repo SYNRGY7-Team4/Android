@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="236dp"
         android:src="@drawable/ic_success"
+        android:contentDescription= "@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/anda_berhasil_membuka_rekening"
+        android:contentDescription="@string/anda_berhasil_membuka_rekening"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@id/iv_regis_success"
         app:layout_constraintStart_toStartOf="@id/iv_regis_success"

@@ -23,7 +23,7 @@
         android:layout_marginTop="288dp"
         android:layout_marginStart="16dp"
         android:fontFamily="@font/calibri"
-        android:text="No HP"
+        android:text="@string/no_hp"
         android:textColor="@color/primary_blue"
         android:textSize="32sp"
         android:textStyle="bold"

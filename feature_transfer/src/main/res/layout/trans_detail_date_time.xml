@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv_trans_success"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/transfer_berhasil"
+        android:textColor="@color/primary_blue"
+        style="@style/RegulerText"
+        android:contentDescription="@string/transfer_berhasil"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_trans_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy_date2"
+        style="@style/RegulerText"
+        android:textColor="@color/grey"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_trans_success"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_dot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="@string/dots"
+        android:textColor="@color/grey"
+        style="@style/RegulerText"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_trans_success"
+        app:layout_constraintStart_toEndOf="@id/tv_trans_date"/>
+
+    <TextView
+        android:id="@+id/tv_trans_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy_time"
+        android:layout_marginStart="2dp"
+
+        style="@style/RegulerText"
+        android:textColor="@color/grey"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_trans_success"
+        app:layout_constraintStart_toEndOf="@id/tv_dot"
+        app:layout_constraintEnd_toStartOf="@id/tv_dot2"/>
+
+    <TextView
+        android:id="@+id/tv_dot2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="@string/dots"
+        android:textColor="@color/grey"
+        style="@style/RegulerText"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_trans_success"
+        app:layout_constraintEnd_toStartOf="@id/tv_ref_num"
+        app:layout_constraintStart_toEndOf="@id/tv_trans_time"/>
+
+    <TextView
+        android:id="@+id/tv_ref_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+
+        android:text="No. Ref 12982928391"
+        android:textColor="@color/grey"
+        style="@style/RegulerText"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_trans_success"
+        app:layout_constraintStart_toEndOf="@id/tv_dot2"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

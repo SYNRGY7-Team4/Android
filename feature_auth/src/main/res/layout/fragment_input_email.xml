@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="288dp"
         style="@style/BoldText"
-        android:text="Email"
+        android:text="@string/email"
         android:textColor="@color/primary_blue"
         android:textSize="32sp"
         android:textStyle="bold"
@@ -51,7 +51,6 @@
             android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_next"
