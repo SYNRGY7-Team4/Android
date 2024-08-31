@@ -10,6 +10,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.synrgy7team4.feature_transfer.databinding.FragmentTransferSuccessBinding
@@ -43,14 +45,16 @@ class TransferSuccessFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return FragmentTransferSuccessBinding.inflate(layoutInflater).also{
+        return FragmentTransferSuccessBinding.inflate(layoutInflater).also {
             _binding = it
         }.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sharedPreferences = requireActivity().getSharedPreferences("TransferPrefs", Context.MODE_PRIVATE)
+        sharedPreferences =
+            requireActivity().getSharedPreferences("TransferPrefs", Context.MODE_PRIVATE)
+
 
         lifecycleScope.launch {
             awaitAll(viewModel.initializeData())
@@ -59,8 +63,10 @@ class TransferSuccessFragment : Fragment() {
         }
 
         binding.btnClose.setOnClickListener {
-            val screenshotPath = takeScreenshot(binding.root)
-            viewModel.saveScreenshotPath(screenshotPath)
+            // val screenshotPath = takeScreenshot(binding.root)
+            val bitmap = getBitmapFromView(binding.root)
+            val path = saveBitmapToFile(bitmap)
+            viewModel.saveScreenshotPath(path)
             requireView().findNavController().popBackStack()
         }
 
@@ -109,23 +115,18 @@ class TransferSuccessFragment : Fragment() {
         return dateTimePlus7Hours.format(outputFormatter)
     }
 
-    private fun takeScreenshot(view: View): String {
+    private fun getBitmapFromView(view: View): Bitmap {
         val bitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
         view.draw(canvas)
-
-        // Simpan bitmap ke file
-        val filename = "screenshot_${System.currentTimeMillis()}.png"
-        val file = File(requireContext().externalCacheDir, filename)
-        val fos = FileOutputStream(file)
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos)
-        fos.flush()
-        fos.close()
-
-        Toast.makeText(context, "Screenshot saved", Toast.LENGTH_SHORT).show()
-        return file.absolutePath
+        return bitmap
     }
 
-
-
+    private fun saveBitmapToFile(bitmap: Bitmap): String {
+        val file = File(requireContext().cacheDir, "screenshot.png")
+        FileOutputStream(file).use {
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, it)
+        }
+        return file.absolutePath
+    }
 }

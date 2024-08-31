@@ -52,7 +52,7 @@ class TransferInputFragment : Fragment() {
         val accountDestinationNo = sharedPreferences.getString("accountDestinationNo", null)
         val bankName = sharedPreferences.getString("bankname", "Lumi Bank")
 
-        binding.bankNameAndAccountNo.text = "$bankName - $accountDestinationNo"
+        binding.bankNameAndAccountNo.text = "Lumi - $accountDestinationNo"
         binding.accountName.text = accountDestinationName ?: "Rekening Tujuan Baru"
 
         binding.btnBack.setOnClickListener {

@@ -104,6 +104,19 @@
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
+
+    <TextView
+        android:id="@+id/tv_alert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_next"
+        app:layout_constraintStart_toStartOf="@id/btn_next"
+        android:text="@string/perhatian_fitur_ini_sedang_dalam_pengembangan"
+        android:textSize="12sp"
+        android:textColor="@color/secondary_red"
+        android:textStyle="bold"
+    />
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_next"
         style="@style/PrimaryActiveButton"

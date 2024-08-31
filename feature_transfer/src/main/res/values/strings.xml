@@ -80,4 +80,5 @@
     <string name="dummy_sender_acc_num">7293 **** **** 9283</string>
     <string name="transfer_berhasil">Transfer Berhasil!</string>
     <string name="lumi_bank">Lumi Bank</string>
+    <string name="perhatian_fitur_ini_sedang_dalam_pengembangan">Perhatian: Fitur ini sedang dalam pengembangan</string>
 </resources>

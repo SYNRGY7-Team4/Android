@@ -62,11 +62,7 @@ class TransferDetailFragment : Fragment() {
         val transactionSuccessBinding = TransSuccessDetailBinding.bind(binding.transDetail.root)
 
         viewModel.screenshotPath.observe(viewLifecycleOwner) { path ->
-            if (path != null) {
-                // Gunakan path untuk menampilkan atau memproses tangkapan layar
-              //  displayScreenshot(path)
-                shareScreenshot(path)
-            }
+
         }
 
         viewModel.mutationData.observe(viewLifecycleOwner) { mutationData ->
@@ -85,26 +81,18 @@ class TransferDetailFragment : Fragment() {
         }
 
         binding.btnShare.setOnClickListener  {
-            val screenshotPath = viewModel.screenshotPath.value
-            if (screenshotPath != null) {
-                if (File(screenshotPath).exists()) {
-                    shareScreenshot(screenshotPath)
-                } else {
-                    Toast.makeText(context, "File tangkapan layar tidak ditemukan", Toast.LENGTH_SHORT).show()
-                }
-            } else {
-                Toast.makeText(context, "Tangkapan layar belum tersedia", Toast.LENGTH_SHORT).show()
+            viewModel.screenshotPath.observe(viewLifecycleOwner) { path ->
+                shareScreenshot(path)
             }
+
+
         }
 
         binding.btnDone.setOnClickListener {
-            findNavController().popBackStack(R.id.transferDetailFragment, false)
-            findNavController().navigate(R.id.action_transferDetailFragment_to_savedAccountFragment)        }
+            findNavController().popBackStack(R.id.savedAccountFragment, false)
+                   }
     }
 
-//    private fun displayScreenshot(path: String) {
-//
-//    }
 private fun shareScreenshot(path: String) {
     val file = File(path)
     val uri = FileProvider.getUriForFile(
