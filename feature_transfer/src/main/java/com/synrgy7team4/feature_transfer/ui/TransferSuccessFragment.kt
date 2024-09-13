@@ -59,8 +59,8 @@ class TransferSuccessFragment : Fragment() {
         }
 
         binding.btnClose.setOnClickListener {
-            val screenshotPath = takeScreenshot(binding.root)
-            viewModel.saveScreenshotPath(screenshotPath)
+//            val screenshotPath = takeScreenshot(binding.root)
+//            viewModel.saveScreenshotPath(screenshotPath)
             requireView().findNavController().popBackStack()
         }
 

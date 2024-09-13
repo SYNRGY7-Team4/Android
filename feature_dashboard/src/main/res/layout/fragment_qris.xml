@@ -93,6 +93,7 @@
         app:layout_constraintBottom_toTopOf="@id/bottomCardView"/>
 
     <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/flashButton"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:src="@mipmap/flash_on_round"

@@ -2,6 +2,7 @@ package com.synrgy7team4.feature_transfer.ui.savedAccountScreen
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.synrgy7team4.common.NavigationHandler
 import com.synrgy7team4.common.makeSnackbar
 import com.synrgy7team4.domain.feature_transfer.model.response.SavedAccountGetDataDomain
 import com.synrgy7team4.feature_transfer.R
@@ -19,6 +21,7 @@ import com.synrgy7team4.feature_transfer.databinding.FragmentSavedAccountBinding
 import com.synrgy7team4.feature_transfer.viewmodel.TransferViewModel
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SavedAccountFragment : Fragment() {
@@ -26,6 +29,7 @@ class SavedAccountFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel by viewModel<TransferViewModel>()
+    private val navHandler: NavigationHandler by inject()
     private var savedAccountList: MutableList<Any> = mutableListOf()
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var adapter: SavedAccountAdapter
@@ -51,7 +55,11 @@ class SavedAccountFragment : Fragment() {
         binding.savedAccountList.adapter = adapter
         binding.savedAccountList.layoutManager = LinearLayoutManager(context)
 
-        binding.btnBack.setOnClickListener { findNavController().popBackStack() }
+        binding.btnBack.setOnClickListener {
+//            findNavController().popBackStack()
+            navHandler.navigateToDashboard()
+
+        }
         binding.sameBankButton.setOnClickListener { handleSameBankButtonClick() }
         binding.differentBankButton.setOnClickListener { handleDifferentBankButtonClick() }
 

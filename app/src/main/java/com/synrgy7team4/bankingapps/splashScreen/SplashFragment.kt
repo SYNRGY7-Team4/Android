@@ -56,7 +56,7 @@ class SplashFragment : Fragment() {
             ObjectAnimator.ofFloat(binding.imgSplashSlide, View.TRANSLATION_Y, 2800f, -100f)
                 .setDuration(7000)
         val scalingAnimate =
-            ObjectAnimator.ofFloat(binding.imgSplashSlide, View.SCALE_Y, 0f, 4f).setDuration(7000)
+            ObjectAnimator.ofFloat(binding.imgSplashSlide, View.SCALE_Y, 0f, 5f).setDuration(5000)
 
         return AnimatorSet().apply {
             playTogether(moveAnimate, scalingAnimate)
@@ -65,8 +65,8 @@ class SplashFragment : Fragment() {
 
     private fun playFadeAnimation(): AnimatorSet {
         val fadeAnimate =
-            ObjectAnimator.ofFloat(binding.imgSplashSlide, View.ALPHA, 1f, 0f).setDuration(3000)
-        val logoFade = ObjectAnimator.ofFloat(binding.imgLumi, View.ALPHA, 1f, 0f).setDuration(1000)
+            ObjectAnimator.ofFloat(binding.imgSplashSlide, View.ALPHA, 1f, 0f).setDuration(2000)
+        val logoFade = ObjectAnimator.ofFloat(binding.imgLumi, View.ALPHA, 1f, 0f).setDuration(500)
 
         return AnimatorSet().apply {
             playTogether(fadeAnimate, logoFade)

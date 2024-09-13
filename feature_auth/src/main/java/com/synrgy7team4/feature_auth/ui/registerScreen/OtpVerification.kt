@@ -61,7 +61,7 @@ class OtpVerification : Fragment() {
 
         sharedPreferences =
             requireActivity().getSharedPreferences("RegisterPrefs", Context.MODE_PRIVATE)
-        isForgotPassword = sharedPreferences.getBoolean("isForgotPassword", false)
+//        isForgotPassword = sharedPreferences.getBoolean("isForgotPassword", false)
 
         val email = sharedPreferences.getString("email", "user@example.com")
         val hp = sharedPreferences.getString("hp", "88888888111")
@@ -70,32 +70,46 @@ class OtpVerification : Fragment() {
             findNavController().popBackStack()
         }
 
-        binding.btnResendOtp.setOnClickListener {
-            if (isResendEnabled) {
-                resendOtp()
-                startCountdownTimer()
-            }
-        }
+//        binding.btnResendOtp.setOnClickListener {
+//            if (isResendEnabled) {
+//                resendOtp()
+//                startCountdownTimer()
+//            }
+//        }
 
         startCountdownTimer()
 
         binding.submitOTPButton.setOnClickListener {
-//            val otp = getOTP()
-//            email?.let {
-//                viewModel.verifyOtp(it, otp)
-//            }
             val otp = getOTP()
-            val email = sharedPreferences.getString("email", "")
+
             if (isForgotPassword) {
                 email?.let { it1 -> viewModel.validateForgetPass(it1, otp) }
             } else {
                 email?.let { it1 -> viewModel.verifyOtp(it1, otp) }
             }
+//            val otp = getOTP()
+//            val email = sharedPreferences.getString("email", "")
+//            if (isForgotPassword) {
+//                email?.let { it1 -> viewModel.validateForgetPass(it1, otp) }
+//            } else {
+//                email?.let { it1 -> viewModel.verifyOtp(it1, otp) }
+//            }
 
 //            view.findNavController().navigate(R.id.action_otpVerification_to_createPasswordFragment)
         }
+
+
+
+        binding.btnResendOtp.setOnClickListener {
+            if (isForgotPassword) {
+                email?.let { it1 -> viewModel.sendForgetPass(it1) }
+            } else {
+                viewModel.sendOtp(email.toString(), hp.toString())
+            }
+        }
+
         viewModel.verifyOtpResult.observe(viewLifecycleOwner) { otpResponse ->
-            val otp = getOtpForget()
+            val otp = getOTP()
             if (otpResponse.success) {
                 sharedPreferences.edit().putString("otp", otp).apply()
                 view.findNavController().navigate(R.id.action_otpVerification_to_createPasswordFragment)
@@ -105,37 +119,38 @@ class OtpVerification : Fragment() {
         }
 
         viewModel.validateForgetPassResult.observe(viewLifecycleOwner) { result ->
-            sharedPreferences.edit().putString("otpForget", getOtpForget()).apply()
             if (result.status) {
-                makeToast(requireContext(), "OTP tidak valid. Silakan coba lagi.")
-
+            sharedPreferences.edit().putString("otpForget", getOtpForget()).apply()
+                makeToast(requireContext(), result.message)
+                view.findNavController().navigate(R.id.action_otpVerification_to_createPasswordFragment)
 
             } else {
                 //makeToast(requireContext(), result.message)
-                makeToast(requireContext(), "Kode OTP berhasil diverifikasi")
+//                makeToast(requireContext(), "Kode OTP berhasil diverifikasi")
+                makeToast(requireContext(), "OTP tidak valid. Silakan coba lagi")
 
             }
         }
 
-        viewModel.sendForgetPassResult.observe(viewLifecycleOwner) { result ->
-            if (result.status) {
-                makeToast(requireContext(), "Gagal mengirim ulang OTP. Silakan coba lagi.")
-
-            } else {
-                makeToast(requireContext(), "OTP berhasil dikirim ulang")
-                startCountdownTimer()
-            }
-//            sharedPreferences.edit().putString("otpForget", getOtpForget()).apply()
-//            view.findNavController().navigate(R.id.action_otpVerification_to_createPasswordFragment)
+//        viewModel.sendForgetPassResult.observe(viewLifecycleOwner) { result ->
 //            if (result.status) {
-//                makeToast(requireContext(), "OTP tidak valid. Silakan coba lagi.")
+//                makeToast(requireContext(), "Gagal mengirim ulang OTP. Silakan coba lagi.")
 //
 //            } else {
-//                makeToast(requireContext(), "Kode OTP berhasil diverifikasi")
-//
-//
+//                makeToast(requireContext(), "OTP berhasil dikirim ulang")
+//                startCountdownTimer()
 //            }
-        }
+////            sharedPreferences.edit().putString("otpForget", getOtpForget()).apply()
+////            view.findNavController().navigate(R.id.action_otpVerification_to_createPasswordFragment)
+////            if (result.status) {
+////                makeToast(requireContext(), "OTP tidak valid. Silakan coba lagi.")
+////
+////            } else {
+////                makeToast(requireContext(), "Kode OTP berhasil diverifikasi")
+////
+////
+////            }
+//        }
 
         viewModel.error.observe(viewLifecycleOwner) { error ->
            // makeToast(requireContext(), error.toString())
@@ -152,7 +167,16 @@ class OtpVerification : Fragment() {
         viewModel.sendOtpResult.observe(viewLifecycleOwner) { otpResponse ->
             if (otpResponse.success) {
                 Log.d("OTP", otpResponse.message)
-                //makeToast(requireContext(), otpResponse.message)
+                makeToast(requireContext(), otpResponse.message)
+//                makeToast(requireContext(), "OTP tidak valid. Silakan coba lagi.")
+            }
+        }
+
+        viewModel.sendForgetPassResult.observe(viewLifecycleOwner) { otpResponse ->
+            if (otpResponse.status) {
+                Log.d("OTP", otpResponse.message)
+                makeToast(requireContext(), otpResponse.message)
+            } else {
                 makeToast(requireContext(), "OTP tidak valid. Silakan coba lagi.")
             }
         }
@@ -163,22 +187,24 @@ class OtpVerification : Fragment() {
 
         setupOTPInputs()
     }
-
-    private fun resendOtp() {
-        val email = sharedPreferences.getString("email", "")
-        val hp = sharedPreferences.getString("hp", "")
-        if (isForgotPassword) {
-            email?.let { viewModel.sendForgetPass(it) }
-        } else {
-            viewModel.sendOtp(email.toString(), hp.toString())
-        }
-        startCountdownTimer()
-
-    }
+//
+//    private fun resendOtp() {
+//        val email = sharedPreferences.getString("email", "")
+//        val hp = sharedPreferences.getString("hp", "")
+//        if (isForgotPassword) {
+//            email?.let { viewModel.sendForgetPass(it) }
+//        } else {
+//            viewModel.sendOtp(email.toString(), hp.toString())
+//        }
+//        startCountdownTimer()
+//
+//    }
 
     private fun startCountdownTimer() {
-        isResendEnabled = false
-        binding.btnResendOtp.isEnabled = false
+        isResendEnabled = true
+//        binding.btnResendOtp.isEnabled = false
+
+        btnResendActive(!isResendEnabled)
 
         countDownTimer?.cancel()
         countDownTimer = object : CountDownTimer(60000, 1000) {
@@ -189,10 +215,11 @@ class OtpVerification : Fragment() {
 
             override fun onFinish() {
                 binding.countDown.text = "00:00"
-                isResendEnabled = true
-                binding.btnResendOtp.isEnabled = true
+                btnResendActive(isResendEnabled)
+//                binding.btnResendOtp.isEnabled = true
             }
-        }.start()    }
+        }.start()
+    }
 
     private fun getOtpForget(): String {
         return "${inputCode1.text}${inputCode2.text}${inputCode3.text}${inputCode4.text}${inputCode5.text}${inputCode6.text}"
@@ -237,6 +264,14 @@ class OtpVerification : Fragment() {
             binding.progressBar.visibility = View.VISIBLE
         } else {
             binding.progressBar.visibility = View.GONE
+        }
+    }
+
+    private fun btnResendActive(isActive: Boolean) {
+        if (isActive) {
+            binding.btnResendOtp.visibility = View.VISIBLE
+        } else {
+            binding.btnResendOtp.visibility = View.GONE
         }
     }
 

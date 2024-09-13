@@ -4,13 +4,17 @@ import android.Manifest
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.ColorDrawable
+import android.hardware.camera2.CameraAccessException
+import android.hardware.camera2.CameraManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -23,7 +27,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -53,22 +59,23 @@ class QrisFragment : Fragment() {
 
     private val viewModel by viewModel<HomeViewModel>()
     private var isBalanceHidden: Boolean = true
+    private var isOnFlash: Boolean = false
+    private lateinit var cameraId: String
     private lateinit var username: String
     private lateinit var hiddenBalance: String
     private lateinit var userBalance: String
     private lateinit var hiddenAccNum: String
     private lateinit var accountNumber: String
     private lateinit var codeScanner: CodeScanner
+    private lateinit var cameraManager: CameraManager
     private lateinit var sharedPreferences: SharedPreferences
 
     private val requestCameraPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
             if (isGranted) {
-                // Izin kamera diberikan
                 Toast.makeText(requireContext(), "Izin kamera diberikan", Toast.LENGTH_SHORT).show()
                 codeScanner.startPreview()
             } else {
-                // Izin kamera ditolak
                 Toast.makeText(requireContext(), "Izin kamera ditolak", Toast.LENGTH_SHORT).show()
             }
         }
@@ -88,7 +95,11 @@ class QrisFragment : Fragment() {
 
         viewModel.getUserData()
 
+        cameraManager = getSystemService(requireContext(), CameraManager::class.java)!!
+
         codeScanner = CodeScanner(requireActivity(), binding.scannerView)
+        codeScanner.camera = CodeScanner.CAMERA_BACK
+
         codeScanner.decodeCallback = DecodeCallback { textResultScan ->
             requireActivity().runOnUiThread {
                 makeToast(requireContext(), textResultScan.text)
@@ -97,6 +108,7 @@ class QrisFragment : Fragment() {
 
                 val deepLinkToTrans = Uri.parse("app://com.example.app/trans/transferInputFromQR")
                 findNavController().navigate(deepLinkToTrans)
+
             }
         }
         checkCameraPermissionAndOpenCamera()
@@ -132,6 +144,26 @@ class QrisFragment : Fragment() {
             userBalance = formatRupiah(balance.toString())
             hiddenBalance = userBalance.replace(Regex("\\d"), "*").replace(Regex("[,.]"), "")
         }
+
+
+        val isFlashAvailable = requireActivity().packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)
+        if (isFlashAvailable) {
+            binding.flashButton.visibility = View.VISIBLE
+        } else {
+            makeToast(requireContext(), "Flash tidak tersedia")
+            binding.flashButton.visibility = View.GONE
+        }
+
+
+        binding.flashButton.setOnClickListener() {
+            isOnFlash = !isOnFlash
+            switchFlashLight(isOnFlash)
+            codeScanner.isFlashEnabled = isOnFlash
+        }
+
+
+
+
     }
 
     private fun checkCameraPermissionAndOpenCamera() {
@@ -140,12 +172,10 @@ class QrisFragment : Fragment() {
                 requireContext(),
                 Manifest.permission.CAMERA
             ) == PackageManager.PERMISSION_GRANTED -> {
-                // Izin sudah diberikan, langsung buka kamera
                 codeScanner.startPreview()
             }
 
             shouldShowRequestPermissionRationale(Manifest.permission.CAMERA) -> {
-                // Tampilkan alasan mengapa izin dibutuhkan dan kemudian minta izin
                 Toast.makeText(
                     requireContext(),
                     "Izin kamera diperlukan untuk mengambil gambar",
@@ -155,11 +185,25 @@ class QrisFragment : Fragment() {
             }
 
             else -> {
-                // Minta izin langsung
                 requestCameraPermissionLauncher.launch(Manifest.permission.CAMERA)
             }
         }
     }
+
+   private fun switchFlashLight(status: Boolean) {
+//       if (status) {
+//           cameraManager.setTorchMode(cameraManager.cameraIdList[0], true)
+//       } else {
+//           cameraManager.setTorchMode(cameraManager.cameraIdList[0], false)
+//       }
+
+       try {
+           cameraId = cameraManager.cameraIdList[0]
+           cameraManager.setTorchMode(cameraId, status)
+       } catch (e: CameraAccessException) {
+           e.printStackTrace()
+       }
+   }
 
     private fun openGallery() {
         val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
