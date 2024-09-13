@@ -228,6 +228,9 @@ class TransferViewModel(
 
     // Fungsi untuk menyimpan path tangkapan layar
     fun saveScreenshotPath(path: String) {
+
         _screenshotPath.value = path
+        Log.d("TransferVM", _screenshotPath.value.toString())
+
     }
 }

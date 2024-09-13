@@ -69,8 +69,7 @@ class FellowAccountBankInputFragment : Fragment() {
 
         viewModel.accountSaveResponse.observe(viewLifecycleOwner) {
             if (it.success) {
-                val transferInputNav = Uri.parse("app://com.example.app/trans/transferInput")
-                findNavController().navigate(transferInputNav)
+                findNavController().navigate(R.id.action_fellowAccountBankInputFragment_to_transferInputFragment)
             }
         }
 
@@ -79,34 +78,7 @@ class FellowAccountBankInputFragment : Fragment() {
             Toast.makeText(requireContext(), "Error: ${error.message}", Toast.LENGTH_SHORT).show()
         }
 
-//        val spinner = binding.bankDropdown
-//        val spinnerAdapter = ArrayAdapter.createFromResource(
-//            requireContext(),
-//            R.array.bank_list, // Use your string-array resource
-//            android.R.layout.simple_spinner_item
-//        )
-//        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//        spinner.adapter = spinnerAdapter
-//        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-//            override fun onItemSelected(
-//                parent: AdapterView<*>,
-//                view: View?,
-//                position: Int,
-//                id: Long
-//            ) {
-//                // Get the selected item
-//                val selectedBank = parent.getItemAtPosition(position).toString()
-//
-//                // Save the selected item to SharedPreferences
-//                sharedPreferences.edit().apply {
-//                    putString("bankname", selectedBank)
-//                    apply()
-//                }
-//            }
-//
-//            override fun onNothingSelected(parent: AdapterView<*>) {
-//                // Optionally handle cases where no selection is made
-//            }
+
         val spinner = binding.bankDropdown
         val id = sharedPreferences.getString("differentbank", "")
         if (id=="true") {
@@ -140,6 +112,7 @@ class FellowAccountBankInputFragment : Fragment() {
             }
         } else {
             spinner.visibility = View.GONE
+            binding.tvAlert.visibility = View.GONE
             binding.tvBankName.visibility = View.GONE
         }
 
@@ -184,17 +157,16 @@ class FellowAccountBankInputFragment : Fragment() {
 
     val selectedBank = sharedPreferences.getString("bankname","Lumi")
     tvAccountNameReceiver.text = userName
-    tvBankNameAccountBankReceiver.text = "${selectedBank} - ${accountNumber}"
+   // tvBankNameAccountBankReceiver.text = "${selectedBank} - ${accountNumber}"
 
         tvAccountNameReceiver.text = userName
-       // tvBankNameAccountBankReceiver.text = "Lumi Bank - ${accountNumber}"
+        tvBankNameAccountBankReceiver.text = "Lumi Bank - ${accountNumber}"
 
         btnClose.setOnClickListener {
             dialog.dismiss()
         }
 
         btnNext.setOnClickListener {
-           // val transferInputNav = Uri.parse("app://com.example.app/trans/transferInput")
             dialog.dismiss()
             findNavController().navigate(R.id.action_fellowAccountBankInputFragment_to_transferInputFragment)
         }

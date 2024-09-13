@@ -88,7 +88,6 @@ class TransferDetailFragment : Fragment() {
             transactionSuccessBinding.transTime.text = formatHourTime(mutationData.datetime)
         }
 
-
         binding.btnDetail.setOnClickListener {
             findNavController().navigate(R.id.action_transferDetailFragment_to_transferSuccessFragment)
         }
