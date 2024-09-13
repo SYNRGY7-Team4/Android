@@ -60,6 +60,7 @@ class SplashFragment : Fragment() {
 
         return AnimatorSet().apply {
             playTogether(moveAnimate, scalingAnimate)
+
         }
     }
 
